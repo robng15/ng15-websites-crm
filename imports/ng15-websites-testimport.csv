@@ -1,0 +1,13 @@
+﻿ref_no,client_company_name,logo,site_url,contact_names,contact_emails,live_server,live_server_notes,site_status,site_status_notes,site_type,site_type_notes,data_type,staging_url,staging_server,dns_location,dns_details,dns_details_notes,site_build,plugins,plugins_other,other_site_config,notes,project_start_date,website_live_date,created_at,updated_at
+,ePim,,e-pim.co.uk,,,Fasthosts VPS,,Complete & Live,,Wordpress (ePim Site),,N/A,,Fasthosts VPS,,,,Divi 4,,,SendGrid is setup,,,,,
+,Fegime UK,,fegime.co.uk,"Alan Reynolds
+Darren Moore","alan.reynolds@fegime.co.uk
+darren@fegime.co.uk",Fasthosts VPS,,Complete & Live,,Wordpress (Brochure Site),,N/A,fegime.ng15staging.uk,Fasthosts VPS,Fasthosts (ng15),,,Elementor,,,,New site on staging - Divi4,,,,
+,Hamilton,,hamilton-catalogue.co.uk,John Stainer,john.stainer@hamilton-litestat.com,Fasthosts VPS,,Complete & Live,,Other,Flipbook site,N/A,N/A,N/A,Fasthosts (ng15),,,,,,,,,,,
+,KNK electrical,,knkelectrical.com,Sachin,sachin@knkelectrical.com,Fasthosts VPS,,Complete & Live,,Other,Holding Page,N/A,knkholding.ng15staging.uk,Fasthosts VPS,External contact,john@aflex.com,,Divi 4,,,,Just a holding page for now,,,,
+,NG15,,ng15.co.uk,,,Fasthosts VPS,,Complete & Live,,,,N/A,,,,,,,,,,,,,,
+,NG15,,ng15.uk,,,Fasthosts VPS,,Complete & Live,,,,N/A,,,,,,,,,,,,,,
+,NG15,,ng153d.co.uk,,,Fasthosts VPS,,Complete & Live,,,,N/A,,,,,,,,,,,,,,
+,Rapid Electrical,,rapidrenewables.co.uk,Nicki Lockerbie,nicki@rapidrenewables.co.uk,Fasthosts VPS,,Complete & Live,,Wordpress (ePim Site),,ePim Connector (inHouse),rapidrenewables.ng15staging.uk,Fasthosts VPS,External contact,Blenheim IT - bens@blenheimit.com,,Divi 4,,,SendGrid is setup,,,,,
+,Sarah Care,,sarahcare.org,Sarah Bradley,sarah.bradley@sarahcare.co.uk,Fasthosts VPS,,Complete & Live,,Wordpress (Brochure Site),,N/A,,,,,,Elementor,,,,,,,,
+,Smart Merchants,,smartmerchants.co.uk,"Richard Marsh, Adam Howitt","richard@smartmerchants.co.uk, adam@hunlokemanagement.com",Fasthosts VPS,,Complete & Live,,Other,Holding Page,N/A,smartmerchants.ng15staging.uk,Fasthosts VPS,External contact,"Davide Broccoli, davide@thebluem.co.uk 07932 795012",,Divi 4,,,,"Holding Page, new brochure site in development on staging",,,,

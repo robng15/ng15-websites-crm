@@ -30,7 +30,8 @@ async function loadSites() {
 function statusBadge(status) {
   if (!status) return '';
   const cls = status === 'Complete & Live' ? 'badge-live'
-            : status === 'In Development'  ? 'badge-dev' : 'badge-other';
+            : status === 'In Development'  ? 'badge-dev'
+            : status === 'Holding Page'    ? 'badge-holding' : 'badge-other';
   return `<span class="badge ${cls}">${escHtml(status)}</span>`;
 }
 

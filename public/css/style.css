@@ -170,6 +170,8 @@ input, textarea, select { font-family: inherit; font-size: 14px; }
 .badge-live::before { background: var(--success); }
 .badge-dev   { background: #FFFBEB; color: #92400E; }
 .badge-dev::before  { background: var(--warning); }
+.badge-holding { background: #F5F3FF; color: #5B21B6; }
+.badge-holding::before { background: #7C3AED; }
 .badge-other { background: var(--bg); color: var(--muted); }
 .badge-other::before { background: #94A3B8; }
 
