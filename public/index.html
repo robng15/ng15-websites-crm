@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NG15 Websites CRM</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="app-page">
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="brand-icon">W</div>
+        <span class="brand-name">Websites CRM</span>
+      </div>
+      <div class="header-actions">
+        <span id="site-count" class="site-count"></span>
+        <button class="btn btn-ghost" id="logout-btn">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="search-wrap">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="search" id="search" placeholder="Search sites…" autocomplete="off">
+      </div>
+
+      <div class="filter-group">
+        <select id="filter-status">
+          <option value="">All Statuses</option>
+          <option>Complete &amp; Live</option>
+          <option>In Development</option>
+          <option>Other</option>
+        </select>
+        <select id="filter-server">
+          <option value="">All Servers</option>
+          <option>Technicks</option>
+          <option>Fasthosts VPS</option>
+          <option>Other</option>
+        </select>
+        <select id="filter-type">
+          <option value="">All Types</option>
+          <option>Wordpress (Brochure Site)</option>
+          <option>Wordpress (ePim Site)</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="toolbar-btns">
+        <label class="btn btn-ghost" title="Import CSV">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          Import
+          <input type="file" id="csv-import" accept=".csv" hidden>
+        </label>
+        <button class="btn btn-ghost" id="export-btn" title="Export CSV">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Export
+        </button>
+        <a href="/site.html" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Site
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <main class="table-wrap">
+    <div id="alert" class="alert" hidden></div>
+
+    <table class="sites-table" id="sites-table">
+      <thead>
+        <tr>
+          <th class="col-ref">Ref</th>
+          <th class="col-logo"></th>
+          <th class="col-name">Company</th>
+          <th class="col-url">URL</th>
+          <th class="col-status">Status</th>
+          <th class="col-server">Server</th>
+          <th class="col-type">Type</th>
+          <th class="col-build">Build</th>
+          <th class="col-actions"></th>
+        </tr>
+      </thead>
+      <tbody id="sites-tbody">
+        <tr id="loading-row">
+          <td colspan="9" class="table-loading">Loading…</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="no-results" class="empty-state" hidden>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <p id="no-results-text">No sites found.</p>
+    </div>
+  </main>
+
+  <!-- Delete modal -->
+  <div id="modal-overlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3>Delete site?</h3>
+      <p id="modal-text">This cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modal-cancel">Cancel</button>
+        <button class="btn btn-danger" id="modal-confirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
