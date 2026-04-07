@@ -1,4 +1,6 @@
 node_modules/
+.DS_Store
+imports/
 .env
 data.db
 data.db-shm
