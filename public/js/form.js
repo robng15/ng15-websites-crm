@@ -90,6 +90,10 @@ async function loadSite() {
     document.getElementById('staging_url').value = site.staging_url || '';
     document.getElementById('other_site_config').value = site.other_site_config || '';
     document.getElementById('notes').value = site.notes || '';
+    document.getElementById('project_start_date').value = site.project_start_date || '';
+    document.getElementById('website_live_date').value = site.website_live_date || '';
+    document.getElementById('created_at').value = site.created_at ? formatDate(site.created_at) : '';
+    document.getElementById('updated_at').value = site.updated_at ? formatDate(site.updated_at) : '';
 
     // Logo
     if (site.logo) {
@@ -184,6 +188,8 @@ document.getElementById('site-form').addEventListener('submit', async e => {
     plugins_other:      document.getElementById('plugins_other').hidden ? '' : document.getElementById('plugins_other').value,
     other_site_config:  document.getElementById('other_site_config').value.trim(),
     notes:              document.getElementById('notes').value.trim(),
+    project_start_date: document.getElementById('project_start_date').value || null,
+    website_live_date:  document.getElementById('website_live_date').value || null,
   };
 
   try {
@@ -200,6 +206,12 @@ document.getElementById('site-form').addEventListener('submit', async e => {
     btn.textContent = isEdit ? 'Save Changes' : 'Save Site';
   }
 });
+
+function formatDate(dt) {
+  if (!dt) return '';
+  const d = new Date(dt.includes('T') ? dt : dt + 'Z');
+  return d.toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
 
 function getRadio(name) {
   const el = document.querySelector(`[name="${name}"]:checked`);

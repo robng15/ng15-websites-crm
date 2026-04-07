@@ -147,7 +147,9 @@ input, textarea, select { font-family: inherit; font-size: 14px; }
 .col-server { width: 120px; }
 .col-type   { width: 180px; }
 .col-build  { width: 90px; }
+.col-date    { width: 110px; }
 .col-actions { width: 100px; }
+.date-cell   { font-size: 13px; color: var(--muted); white-space: nowrap; }
 .table-loading { text-align: center; color: var(--muted); padding: 40px !important; }
 .ref-no { font-family: monospace; font-size: 12px; color: var(--muted); font-weight: 600; }
 .site-name { font-weight: 600; }

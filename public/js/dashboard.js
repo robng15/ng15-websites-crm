@@ -46,6 +46,12 @@ function escHtml(s) {
   return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+function formatShortDate(d) {
+  if (!d) return '';
+  const dt = new Date(d);
+  return dt.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
 function renderTable(sites) {
   siteCount.textContent = `${allSites.length} site${allSites.length !== 1 ? 's' : ''}`;
 
@@ -69,6 +75,7 @@ function renderTable(sites) {
       <td>${escHtml(s.live_server)}</td>
       <td>${escHtml(s.site_type)}</td>
       <td>${escHtml(s.site_build)}</td>
+      <td class="date-cell">${formatShortDate(s.website_live_date)}</td>
       <td>
         <div class="row-actions">
           <a href="/site.html?id=${s.id}" class="btn btn-ghost">Edit</a>

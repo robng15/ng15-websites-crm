@@ -31,9 +31,20 @@ db.exec(`
     plugins_other TEXT,
     other_site_config TEXT,
     notes TEXT,
+    project_start_date TEXT,
+    website_live_date TEXT,
     created_at TEXT DEFAULT (datetime('now')),
     updated_at TEXT DEFAULT (datetime('now'))
   )
 `);
+
+// Migrate existing databases
+const existingCols = db.pragma('table_info(sites)').map(c => c.name);
+if (!existingCols.includes('project_start_date')) {
+  db.exec('ALTER TABLE sites ADD COLUMN project_start_date TEXT');
+}
+if (!existingCols.includes('website_live_date')) {
+  db.exec('ALTER TABLE sites ADD COLUMN website_live_date TEXT');
+}
 
 module.exports = db;
