@@ -2,6 +2,8 @@ requireAuth();
 
 let allSites = [];
 let deleteTargetId = null;
+let sortCol = 'ref_no';
+let sortDir = 'asc';
 
 const tbody      = document.getElementById('sites-tbody');
 const noResults  = document.getElementById('no-results');
@@ -53,6 +55,27 @@ function formatShortDate(d) {
   return dt.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
+function sortSites(sites) {
+  return [...sites].sort((a, b) => {
+    const av = String(a[sortCol] ?? '').toLowerCase();
+    const bv = String(b[sortCol] ?? '').toLowerCase();
+    return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+}
+
+function updateSortHeaders() {
+  document.querySelectorAll('.sortable').forEach(th => {
+    const icon = th.querySelector('.sort-icon');
+    if (th.dataset.col === sortCol) {
+      icon.textContent = sortDir === 'asc' ? ' ▲' : ' ▼';
+      th.classList.add('sort-active');
+    } else {
+      icon.textContent = '';
+      th.classList.remove('sort-active');
+    }
+  });
+}
+
 function renderTable(sites) {
   siteCount.textContent = `${allSites.length} site${allSites.length !== 1 ? 's' : ''}`;
 
@@ -66,7 +89,8 @@ function renderTable(sites) {
   }
 
   noResults.hidden = true;
-  tbody.innerHTML = sites.map(s => `
+  updateSortHeaders();
+  tbody.innerHTML = sortSites(sites).map(s => `
     <tr>
       <td class="ref-no">${escHtml(s.ref_no)}</td>
       <td>${logoCell(s.logo, s.client_company_name)}</td>
@@ -93,6 +117,7 @@ function applyFilters() {
   const status  = document.getElementById('filter-status').value;
   const server  = document.getElementById('filter-server').value;
   const type    = document.getElementById('filter-type').value;
+  const build   = document.getElementById('filter-build').value;
 
   const filtered = allSites.filter(s => {
     const matchQ = !q || [s.ref_no, s.client_company_name, s.site_url, s.site_type, s.live_server, s.notes]
@@ -100,7 +125,8 @@ function applyFilters() {
     const matchStatus = !status || s.site_status === status;
     const matchServer = !server || s.live_server === server;
     const matchType   = !type   || s.site_type === type;
-    return matchQ && matchStatus && matchServer && matchType;
+    const matchBuild  = !build  || s.site_build === build;
+    return matchQ && matchStatus && matchServer && matchType && matchBuild;
   });
 
   renderTable(filtered);
@@ -110,6 +136,20 @@ document.getElementById('search').addEventListener('input', applyFilters);
 document.getElementById('filter-status').addEventListener('change', applyFilters);
 document.getElementById('filter-server').addEventListener('change', applyFilters);
 document.getElementById('filter-type').addEventListener('change', applyFilters);
+document.getElementById('filter-build').addEventListener('change', applyFilters);
+
+// ── Sort ──────────────────────────────────────────────────────────────────
+document.querySelectorAll('.sortable').forEach(th => {
+  th.addEventListener('click', () => {
+    if (sortCol === th.dataset.col) {
+      sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+    } else {
+      sortCol = th.dataset.col;
+      sortDir = 'asc';
+    }
+    applyFilters();
+  });
+});
 
 // ── Delete ────────────────────────────────────────────────────────────────
 tbody.addEventListener('click', e => {

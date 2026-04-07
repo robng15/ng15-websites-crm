@@ -52,6 +52,12 @@
           <option>Wordpress (ePim Site)</option>
           <option>Other</option>
         </select>
+        <select id="filter-build">
+          <option value="">All Builds</option>
+          <option>Divi 4</option>
+          <option>Divi 5</option>
+          <option>Elementor</option>
+        </select>
       </div>
 
       <div class="toolbar-btns">
@@ -87,15 +93,15 @@
     <table class="sites-table" id="sites-table">
       <thead>
         <tr>
-          <th class="col-ref">Ref</th>
+          <th class="col-ref sortable" data-col="ref_no">Ref <span class="sort-icon"></span></th>
           <th class="col-logo"></th>
-          <th class="col-name">Company</th>
-          <th class="col-url">URL</th>
-          <th class="col-status">Status</th>
-          <th class="col-server">Server</th>
-          <th class="col-type">Type</th>
-          <th class="col-build">Build</th>
-          <th class="col-date">Live Date</th>
+          <th class="col-name sortable" data-col="client_company_name">Company <span class="sort-icon"></span></th>
+          <th class="col-url sortable" data-col="site_url">URL <span class="sort-icon"></span></th>
+          <th class="col-status sortable" data-col="site_status">Status <span class="sort-icon"></span></th>
+          <th class="col-server sortable" data-col="live_server">Server <span class="sort-icon"></span></th>
+          <th class="col-type sortable" data-col="site_type">Type <span class="sort-icon"></span></th>
+          <th class="col-build sortable" data-col="site_build">Build <span class="sort-icon"></span></th>
+          <th class="col-date sortable" data-col="website_live_date">Live Date <span class="sort-icon"></span></th>
           <th class="col-actions"></th>
         </tr>
       </thead>
