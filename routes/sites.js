@@ -109,10 +109,14 @@ router.post('/import/csv', (req, res) => {
     )
   `);
 
+  // Pre-compute starting ref number before the transaction opens
+  const lastRow = db.prepare('SELECT ref_no FROM sites ORDER BY id DESC LIMIT 1').get();
+  let counter = lastRow ? parseInt(lastRow.ref_no.replace('NG-', ''), 10) + 1 : 1;
+
   const importAll = db.transaction(rows => {
     for (const row of rows) {
       if (!row.ref_no || !row.ref_no.trim()) {
-        row.ref_no = nextRefNo();
+        row.ref_no = `NG-${String(counter++).padStart(3, '0')}`;
       }
       insert.run(siteParams(row));
     }
