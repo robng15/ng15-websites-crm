@@ -110,7 +110,12 @@ router.post('/import/csv', (req, res) => {
   `);
 
   const importAll = db.transaction(rows => {
-    for (const row of rows) insert.run(siteParams(row));
+    for (const row of rows) {
+      if (!row.ref_no || !row.ref_no.trim()) {
+        row.ref_no = nextRefNo();
+      }
+      insert.run(siteParams(row));
+    }
   });
 
   importAll(rows);
