@@ -10,7 +10,7 @@ const COLUMNS = [
   'site_type', 'site_type_notes', 'data_type', 'staging_url', 'staging_server',
   'dns_location', 'dns_details', 'dns_details_notes', 'site_build',
   'plugins', 'plugins_other', 'other_site_config', 'notes',
-  'project_start_date', 'website_live_date', 'created_at', 'updated_at'
+  'site_build_notes', 'project_start_date', 'website_live_date', 'created_at', 'updated_at'
 ];
 
 function nextRefNo() {
@@ -52,6 +52,7 @@ function siteParams(d, ref_no) {
     plugins_other: d.plugins_other || '',
     other_site_config: d.other_site_config || '',
     notes: d.notes || '',
+    site_build_notes: d.site_build_notes || '',
     project_start_date: d.project_start_date || null,
     website_live_date: d.website_live_date || null,
   };
@@ -98,14 +99,14 @@ router.post('/import/csv', (req, res) => {
       site_type, site_type_notes, data_type, staging_url, staging_server,
       dns_location, dns_details, dns_details_notes, site_build,
       plugins, plugins_other, other_site_config, notes,
-      project_start_date, website_live_date
+      site_build_notes, project_start_date, website_live_date
     ) VALUES (
       @ref_no, @client_company_name, @logo, @site_url, @contact_names, @contact_emails,
       @live_server, @live_server_notes, @site_status, @site_status_notes,
       @site_type, @site_type_notes, @data_type, @staging_url, @staging_server,
       @dns_location, @dns_details, @dns_details_notes, @site_build,
       @plugins, @plugins_other, @other_site_config, @notes,
-      @project_start_date, @website_live_date
+      @site_build_notes, @project_start_date, @website_live_date
     )
   `);
 
@@ -143,14 +144,14 @@ router.post('/', (req, res) => {
       site_type, site_type_notes, data_type, staging_url, staging_server,
       dns_location, dns_details, dns_details_notes, site_build,
       plugins, plugins_other, other_site_config, notes,
-      project_start_date, website_live_date
+      site_build_notes, project_start_date, website_live_date
     ) VALUES (
       @ref_no, @client_company_name, @logo, @site_url, @contact_names, @contact_emails,
       @live_server, @live_server_notes, @site_status, @site_status_notes,
       @site_type, @site_type_notes, @data_type, @staging_url, @staging_server,
       @dns_location, @dns_details, @dns_details_notes, @site_build,
       @plugins, @plugins_other, @other_site_config, @notes,
-      @project_start_date, @website_live_date
+      @site_build_notes, @project_start_date, @website_live_date
     )
   `).run(siteParams(req.body, ref_no));
 
@@ -184,6 +185,7 @@ router.put('/:id', (req, res) => {
       plugins_other = @plugins_other,
       other_site_config = @other_site_config,
       notes = @notes,
+      site_build_notes = @site_build_notes,
       project_start_date = @project_start_date,
       website_live_date = @website_live_date,
       updated_at = datetime('now')

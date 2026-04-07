@@ -18,6 +18,7 @@ const radioNotes = {
   site_status:  'site_status_notes',
   site_type:    'site_type_notes',
   dns_details:  'dns_details_notes',
+  site_build:   'site_build_notes',
 };
 
 Object.entries(radioNotes).forEach(([radioName, notesId]) => {
@@ -90,6 +91,7 @@ async function loadSite() {
     document.getElementById('staging_url').value = site.staging_url || '';
     document.getElementById('other_site_config').value = site.other_site_config || '';
     document.getElementById('notes').value = site.notes || '';
+    document.getElementById('site_build_notes').value = site.site_build_notes || '';
     document.getElementById('project_start_date').value = site.project_start_date || '';
     document.getElementById('website_live_date').value = site.website_live_date || '';
     document.getElementById('created_at').value = site.created_at ? formatDate(site.created_at) : '';
@@ -184,6 +186,7 @@ document.getElementById('site-form').addEventListener('submit', async e => {
     dns_details:        getRadio('dns_details'),
     dns_details_notes:  document.getElementById('dns_details_notes').hidden ? '' : document.getElementById('dns_details_notes').value,
     site_build:         getRadio('site_build'),
+    site_build_notes:   document.getElementById('site_build_notes').hidden ? '' : document.getElementById('site_build_notes').value,
     plugins,
     plugins_other:      document.getElementById('plugins_other').hidden ? '' : document.getElementById('plugins_other').value,
     other_site_config:  document.getElementById('other_site_config').value.trim(),

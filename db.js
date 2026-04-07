@@ -46,5 +46,8 @@ if (!existingCols.includes('project_start_date')) {
 if (!existingCols.includes('website_live_date')) {
   db.exec('ALTER TABLE sites ADD COLUMN website_live_date TEXT');
 }
+if (!existingCols.includes('site_build_notes')) {
+  db.exec('ALTER TABLE sites ADD COLUMN site_build_notes TEXT');
+}
 
 module.exports = db;
