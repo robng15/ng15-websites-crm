@@ -141,7 +141,7 @@ input, textarea, select { font-family: inherit; font-size: 14px; }
 .sites-table tr:last-child td { border-bottom: none; }
 .sites-table tbody tr:hover { background: #FAFBFF; }
 .col-ref    { width: 80px; }
-.col-logo   { width: 48px; }
+.col-logo   { width: 88px; }
 .col-url    { max-width: 180px; }
 .col-status { width: 130px; }
 .col-server { width: 120px; }
@@ -159,8 +159,8 @@ input, textarea, select { font-family: inherit; font-size: 14px; }
 .site-name { font-weight: 600; }
 .site-url a { color: var(--primary); font-size: 13px; }
 .site-url a:hover { text-decoration: underline; }
-.logo-thumb { width: 32px; height: 32px; object-fit: contain; border-radius: 4px; border: 1px solid var(--border); }
-.logo-placeholder { width: 32px; height: 32px; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--muted); }
+.logo-thumb { width: 80px; height: 80px; object-fit: contain; border-radius: 4px; border: 1px solid var(--border); }
+.logo-placeholder { width: 80px; height: 80px; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--muted); }
 .row-actions { display: flex; gap: 6px; }
 .row-actions .btn { padding: 4px 10px; font-size: 12px; }
 
