@@ -59,9 +59,22 @@
           <option>Elementor</option>
           <option>Other</option>
         </select>
+        <select id="filter-maintenance">
+          <option value="">All Maintenance Levels</option>
+          <option>Just Hosting</option>
+          <option>Package 1</option>
+          <option>Package 2</option>
+          <option>Package 3</option>
+        </select>
       </div>
 
       <div class="toolbar-btns">
+        <a href="/maintenance.html" class="btn btn-ghost" title="Maintenance Dashboard">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          Maintenance
+        </a>
         <label class="btn btn-ghost" title="Import CSV">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -102,13 +115,14 @@
           <th class="col-server sortable" data-col="live_server">Server <span class="sort-icon"></span></th>
           <th class="col-type sortable" data-col="site_type">Type <span class="sort-icon"></span></th>
           <th class="col-build sortable" data-col="site_build">Build <span class="sort-icon"></span></th>
+          <th class="col-maintenance sortable" data-col="maintenance_level">Maintenance Level <span class="sort-icon"></span></th>
           <th class="col-date sortable" data-col="website_live_date">Live Date <span class="sort-icon"></span></th>
           <th class="col-actions"></th>
         </tr>
       </thead>
       <tbody id="sites-tbody">
         <tr id="loading-row">
-          <td colspan="10" class="table-loading">Loading…</td>
+          <td colspan="11" class="table-loading">Loading…</td>
         </tr>
       </tbody>
     </table>

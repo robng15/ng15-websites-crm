@@ -134,6 +134,30 @@
         </div>
       </section>
 
+      <!-- Section: Maintenance -->
+      <section class="form-section">
+        <h2 class="section-title">Maintenance</h2>
+        <div class="form-grid">
+
+          <div class="field-group">
+            <label>Maintenance Level</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="maintenance_level" value="Just Hosting"> Just Hosting</label>
+              <label class="radio-label"><input type="radio" name="maintenance_level" value="Package 1"> Package 1 (Standard)</label>
+              <label class="radio-label"><input type="radio" name="maintenance_level" value="Package 2"> Package 2 (Managed)</label>
+              <label class="radio-label"><input type="radio" name="maintenance_level" value="Package 3"> Package 3 (Bespoke)</label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="staging_snapshot_date">Staging Snapshot Date</label>
+            <input type="date" id="staging_snapshot_date" name="staging_snapshot_date">
+          </div>
+
+        </div>
+        <p class="field-hint">Sites with a maintenance level (other than Just Hosting) appear on the <a href="/maintenance.html">Maintenance Dashboard</a>.</p>
+      </section>
+
       <!-- Section: DNS -->
       <section class="form-section">
         <h2 class="section-title">DNS</h2>
@@ -151,6 +175,7 @@
             <label>DNS Details</label>
             <div class="radio-group">
               <label class="radio-label"><input type="radio" name="dns_details" value="Fasthosts (ng15)"> Fasthosts (ng15)</label>
+              <label class="radio-label"><input type="radio" name="dns_details" value="NG15 Cloudflare"> NG15 Cloudflare</label>
               <label class="radio-label"><input type="radio" name="dns_details" value="external contact"> External contact</label>
             </div>
             <input type="text" class="notes-field" id="dns_details_notes" name="dns_details_notes" placeholder="Contact details…" hidden>

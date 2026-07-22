@@ -37,6 +37,15 @@ function statusBadge(status) {
   return `<span class="badge ${cls}">${escHtml(status)}</span>`;
 }
 
+function maintenanceBadge(level) {
+  if (!level) return '';
+  const cls = level === 'Just Hosting' ? 'badge-other'
+            : level === 'Package 1'    ? 'badge-holding'
+            : level === 'Package 2'    ? 'badge-dev'
+            : level === 'Package 3'    ? 'badge-live' : 'badge-other';
+  return `<span class="badge ${cls}">${escHtml(level)}</span>`;
+}
+
 function logoCell(logo, name) {
   if (logo) {
     return `<img class="logo-thumb" src="${escHtml(logo)}" alt="${escHtml(name)}">`;
@@ -100,6 +109,7 @@ function renderTable(sites) {
       <td>${escHtml(s.live_server)}</td>
       <td>${escHtml(s.site_type)}</td>
       <td>${escHtml(s.site_build)}</td>
+      <td>${maintenanceBadge(s.maintenance_level)}</td>
       <td class="date-cell">${formatShortDate(s.website_live_date)}</td>
       <td>
         <div class="row-actions">
@@ -118,6 +128,7 @@ function applyFilters() {
   const server  = document.getElementById('filter-server').value;
   const type    = document.getElementById('filter-type').value;
   const build   = document.getElementById('filter-build').value;
+  const maint   = document.getElementById('filter-maintenance').value;
 
   const filtered = allSites.filter(s => {
     const matchQ = !q || [s.ref_no, s.client_company_name, s.site_url, s.site_type, s.live_server, s.notes]
@@ -126,7 +137,8 @@ function applyFilters() {
     const matchServer = !server || s.live_server === server;
     const matchType   = !type   || s.site_type === type;
     const matchBuild  = !build  || s.site_build === build;
-    return matchQ && matchStatus && matchServer && matchType && matchBuild;
+    const matchMaint  = !maint  || s.maintenance_level === maint;
+    return matchQ && matchStatus && matchServer && matchType && matchBuild && matchMaint;
   });
 
   renderTable(filtered);
@@ -137,6 +149,7 @@ document.getElementById('filter-status').addEventListener('change', applyFilters
 document.getElementById('filter-server').addEventListener('change', applyFilters);
 document.getElementById('filter-type').addEventListener('change', applyFilters);
 document.getElementById('filter-build').addEventListener('change', applyFilters);
+document.getElementById('filter-maintenance').addEventListener('change', applyFilters);
 
 // ── Sort ──────────────────────────────────────────────────────────────────
 document.querySelectorAll('.sortable').forEach(th => {

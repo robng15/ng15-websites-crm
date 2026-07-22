@@ -147,6 +147,7 @@ input, textarea, select { font-family: inherit; font-size: 14px; }
 .col-server { width: 120px; }
 .col-type   { width: 180px; }
 .col-build  { width: 90px; }
+.col-maintenance { width: 130px; }
 .col-date    { width: 110px; }
 .col-actions { width: 100px; }
 .date-cell   { font-size: 13px; color: var(--muted); white-space: nowrap; }
@@ -251,3 +252,64 @@ input, textarea, select { font-family: inherit; font-size: 14px; }
 
 /* ── Form Actions ──────────────────────────────────────────────────────── */
 .form-actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 4px; }
+
+.field-hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.field-hint a { color: var(--primary); }
+.field-hint a:hover { text-decoration: underline; }
+
+/* ── Maintenance Dashboard ─────────────────────────────────────────────── */
+.maint-toolbar {
+  max-width: 1100px; margin: 20px auto 0; padding: 0 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.maint-toolbar label { font-weight: 500; font-size: 13px; }
+.maint-toolbar input[type="month"] {
+  padding: 7px 11px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+}
+.maint-main { max-width: 1100px; margin: 20px auto 40px; padding: 0 20px; display: flex; flex-direction: column; gap: 20px; }
+.tier-group {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.tier-header {
+  padding: 12px 18px; background: var(--bg); border-bottom: 1px solid var(--border);
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text);
+}
+.tier-clients { display: flex; flex-direction: column; }
+.tier-client-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px; border-bottom: 1px solid var(--border); font-size: 14px;
+}
+.tier-client-row:last-child { border-bottom: none; }
+.tier-client-row.is-link { cursor: pointer; }
+.tier-client-row.is-link:hover { background: #FAFBFF; }
+.tier-client-name { font-weight: 600; }
+.job-count { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+.job-count.all-done { background: #ECFDF5; color: #065F46; }
+.job-count.pending  { background: #FFFBEB; color: #92400E; }
+.job-count.na       { color: var(--muted); font-weight: 400; }
+.tier-empty { padding: 14px 18px; color: var(--muted); font-size: 13px; }
+
+/* ── Maintenance Client Page ──────────────────────────────────────────── */
+.client-site-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px; margin-bottom: 18px;
+}
+.client-site-title { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.client-site-tier { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+.task-row { border-top: 1px solid var(--border); padding: 14px 0; }
+.task-row:first-of-type { border-top: none; padding-top: 0; }
+.task-check {
+  display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; cursor: pointer;
+}
+.task-check input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
+.task-detail-box {
+  margin: 10px 0 0 27px; padding: 14px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px;
+}
+.task-detail-box .field-group--full { grid-column: 1 / -1; }
+.task-detail-box .field-group { margin-bottom: 0; }
+.staging-box { margin-top: 4px; }
+.support-hours-box { display: flex; align-items: flex-end; gap: 16px; margin-top: 4px; }
+.support-hours-box .field-group { margin-bottom: 0; max-width: 140px; }
+.support-hours-remaining { font-size: 13px; color: var(--muted); padding-bottom: 9px; }

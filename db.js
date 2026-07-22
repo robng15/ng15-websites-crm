@@ -49,5 +49,36 @@ if (!existingCols.includes('website_live_date')) {
 if (!existingCols.includes('site_build_notes')) {
   db.exec('ALTER TABLE sites ADD COLUMN site_build_notes TEXT');
 }
+if (!existingCols.includes('maintenance_level')) {
+  db.exec('ALTER TABLE sites ADD COLUMN maintenance_level TEXT');
+}
+if (!existingCols.includes('staging_snapshot_date')) {
+  db.exec('ALTER TABLE sites ADD COLUMN staging_snapshot_date TEXT');
+}
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS maintenance_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id INTEGER NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+    period TEXT NOT NULL,
+    task_type TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    completed_at TEXT,
+    backup_destination TEXT,
+    notes TEXT,
+    UNIQUE(site_id, period, task_type)
+  )
+`);
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS support_hours (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id INTEGER NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+    period TEXT NOT NULL,
+    hours_used REAL NOT NULL DEFAULT 0,
+    notes TEXT,
+    UNIQUE(site_id, period)
+  )
+`);
 
 module.exports = db;

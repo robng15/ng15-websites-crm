@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client — NG15 Websites CRM</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="app-page">
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <a href="/maintenance.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </a>
+        <div class="brand-icon">W</div>
+        <span class="brand-name" id="client-name">Client</span>
+      </div>
+      <div class="header-actions">
+        <span id="period-label" class="site-count"></span>
+        <button class="btn btn-ghost" id="logout-btn">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-main">
+    <div id="alert" class="alert" hidden></div>
+    <div id="site-cards"></div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/maintenance-client.js"></script>
+</body>
+</html>

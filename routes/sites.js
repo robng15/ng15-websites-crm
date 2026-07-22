@@ -10,7 +10,8 @@ const COLUMNS = [
   'site_type', 'site_type_notes', 'data_type', 'staging_url', 'staging_server',
   'dns_location', 'dns_details', 'dns_details_notes', 'site_build',
   'plugins', 'plugins_other', 'other_site_config', 'notes',
-  'site_build_notes', 'project_start_date', 'website_live_date', 'created_at', 'updated_at'
+  'site_build_notes', 'project_start_date', 'website_live_date',
+  'maintenance_level', 'staging_snapshot_date', 'created_at', 'updated_at'
 ];
 
 function nextRefNo() {
@@ -55,6 +56,8 @@ function siteParams(d, ref_no) {
     site_build_notes: d.site_build_notes || '',
     project_start_date: d.project_start_date || null,
     website_live_date: d.website_live_date || null,
+    maintenance_level: d.maintenance_level || '',
+    staging_snapshot_date: d.staging_snapshot_date || null,
   };
 }
 
@@ -99,14 +102,16 @@ router.post('/import/csv', (req, res) => {
       site_type, site_type_notes, data_type, staging_url, staging_server,
       dns_location, dns_details, dns_details_notes, site_build,
       plugins, plugins_other, other_site_config, notes,
-      site_build_notes, project_start_date, website_live_date
+      site_build_notes, project_start_date, website_live_date,
+      maintenance_level, staging_snapshot_date
     ) VALUES (
       @ref_no, @client_company_name, @logo, @site_url, @contact_names, @contact_emails,
       @live_server, @live_server_notes, @site_status, @site_status_notes,
       @site_type, @site_type_notes, @data_type, @staging_url, @staging_server,
       @dns_location, @dns_details, @dns_details_notes, @site_build,
       @plugins, @plugins_other, @other_site_config, @notes,
-      @site_build_notes, @project_start_date, @website_live_date
+      @site_build_notes, @project_start_date, @website_live_date,
+      @maintenance_level, @staging_snapshot_date
     )
   `);
 
@@ -144,14 +149,16 @@ router.post('/', (req, res) => {
       site_type, site_type_notes, data_type, staging_url, staging_server,
       dns_location, dns_details, dns_details_notes, site_build,
       plugins, plugins_other, other_site_config, notes,
-      site_build_notes, project_start_date, website_live_date
+      site_build_notes, project_start_date, website_live_date,
+      maintenance_level, staging_snapshot_date
     ) VALUES (
       @ref_no, @client_company_name, @logo, @site_url, @contact_names, @contact_emails,
       @live_server, @live_server_notes, @site_status, @site_status_notes,
       @site_type, @site_type_notes, @data_type, @staging_url, @staging_server,
       @dns_location, @dns_details, @dns_details_notes, @site_build,
       @plugins, @plugins_other, @other_site_config, @notes,
-      @site_build_notes, @project_start_date, @website_live_date
+      @site_build_notes, @project_start_date, @website_live_date,
+      @maintenance_level, @staging_snapshot_date
     )
   `).run(siteParams(req.body, ref_no));
 
@@ -188,6 +195,8 @@ router.put('/:id', (req, res) => {
       site_build_notes = @site_build_notes,
       project_start_date = @project_start_date,
       website_live_date = @website_live_date,
+      maintenance_level = @maintenance_level,
+      staging_snapshot_date = @staging_snapshot_date,
       updated_at = datetime('now')
     WHERE id = @id
   `).run({ ...p, id: req.params.id });

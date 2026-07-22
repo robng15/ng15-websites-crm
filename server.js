@@ -20,6 +20,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/sites', require('./routes/sites'));
 app.use('/api/upload', require('./routes/upload'));
+app.use('/api/maintenance', require('./routes/maintenance'));
 
 app.listen(PORT, () => {
   console.log(`NG15 Websites CRM running on http://localhost:${PORT}`);

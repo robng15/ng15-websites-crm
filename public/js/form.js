@@ -94,6 +94,7 @@ async function loadSite() {
     document.getElementById('site_build_notes').value = site.site_build_notes || '';
     document.getElementById('project_start_date').value = site.project_start_date || '';
     document.getElementById('website_live_date').value = site.website_live_date || '';
+    document.getElementById('staging_snapshot_date').value = site.staging_snapshot_date || '';
     document.getElementById('created_at').value = site.created_at ? formatDate(site.created_at) : '';
     document.getElementById('updated_at').value = site.updated_at ? formatDate(site.updated_at) : '';
 
@@ -105,7 +106,7 @@ async function loadSite() {
     }
 
     // Radio fields
-    const radios = ['live_server', 'site_status', 'site_type', 'data_type', 'staging_server', 'dns_location', 'dns_details', 'site_build'];
+    const radios = ['live_server', 'site_status', 'site_type', 'data_type', 'staging_server', 'dns_location', 'dns_details', 'site_build', 'maintenance_level'];
     radios.forEach(name => {
       const el = document.querySelector(`[name="${name}"][value="${CSS.escape(site[name] || '')}"]`);
       if (el) el.checked = true;
@@ -193,6 +194,8 @@ document.getElementById('site-form').addEventListener('submit', async e => {
     notes:              document.getElementById('notes').value.trim(),
     project_start_date: document.getElementById('project_start_date').value || null,
     website_live_date:  document.getElementById('website_live_date').value || null,
+    maintenance_level:     getRadio('maintenance_level'),
+    staging_snapshot_date: document.getElementById('staging_snapshot_date').value || null,
   };
 
   try {
